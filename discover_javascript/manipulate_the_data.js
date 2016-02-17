@@ -1,6 +1,4 @@
 var https = require('https');
-var myMap = new Map();
-
 
 var options = {
   hostname: 'api.github.com',
