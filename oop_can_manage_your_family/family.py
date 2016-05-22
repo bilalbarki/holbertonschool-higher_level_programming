@@ -29,6 +29,7 @@ class Person():
         
         self.last_name=""
         self.is_married_to=0
+        self.children=[]
     '''end of initialization'''
     
     '''getters'''
@@ -46,6 +47,9 @@ class Person():
 
     def get_first_name(self):
         return self.__first_name
+
+    def get_eyes_color(self):
+        return self.__eyes_color
     '''end of getters'''
 
     '''Public methods'''
@@ -139,8 +143,57 @@ class Baby(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    def can_have_child(self):
+        return False
 
-    
+    def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
+        if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
+            raise Exception("p is not an Adult of Senior")
+        if (type(id) is not int) or (id<0):
+            raise Exception("id is not an integer")
+        if (type(first_name) is not str) or (first_name==""):
+            raise Exception("first_name is not a string")
+        if (all(isinstance(date_of_birth, int) for item in date_of_birth) or (len(date_of_birth)!=3)) or (date_of_birth[0]<1 or date_of_birth[0]>12) or (date_of_birth[1]<1 or date_of_birth[1]>31):
+            raise Exception("date_of_birth is not a valid date")
+        if (type(genre) is not str) or (genre not in Person.GENRES):
+            raise Exception("genre is not valid")
+        if (not self.can_have_child()) or (not p.can_have_child()):
+            raise Exception("Can't have baby")
+
+        if eyes_color=='':
+            if self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Green'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Brown'
+
+        if (type(eyes_color) is not str) or (eyes_color not in Person.EYES_COLORS):
+            raise Exception("eyes_color is not valid")
+
+        if id not in p.children:
+            p.children.append(id)
+        if id not in self.children:
+            self.children.append(id) 
+
+        return Baby(id,first_name,date_of_birth,genre,eyes_color)
+
+    def adopt_child(self, c):
+        if (not self.can_have_child()):
+            raise Exception("Can't adopt child")
+        self.children.append(c.get_id())    
 
 class Teenager(Person):
     def can_run(self):
@@ -180,6 +233,59 @@ class Teenager(Person):
             p.last_name = self.last_name
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
+
+    def can_have_child(self):
+        return False
+
+    def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
+        if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
+            raise Exception("p is not an Adult of Senior")
+        if (type(id) is not int) or (id<0):
+            raise Exception("id is not an integer")
+        if (type(first_name) is not str) or (first_name==""):
+            raise Exception("first_name is not a string")
+        if (all(isinstance(date_of_birth, int) for item in date_of_birth) or (len(date_of_birth)!=3)) or (date_of_birth[0]<1 or date_of_birth[0]>12) or (date_of_birth[1]<1 or date_of_birth[1]>31):
+            raise Exception("date_of_birth is not a valid date")
+        if (type(genre) is not str) or (genre not in Person.GENRES):
+            raise Exception("genre is not valid")
+
+        if (not self.can_have_child()) or (not p.can_have_child()):
+            raise Exception("Can't have baby")
+
+        if eyes_color=='':
+            if self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Green'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Brown'
+
+        if (type(eyes_color) is not str) or (eyes_color not in Person.EYES_COLORS):
+            raise Exception("eyes_color is not valid")
+
+        if id not in p.children:
+            p.children.append(id)
+        if id not in self.children:
+            self.children.append(id)
+
+        return Baby(id,first_name,date_of_birth,genre,eyes_color)
+
+    def adopt_child(self, c):
+        if (not self.can_have_child()):
+            raise Exception("Can't adopt child")
+        self.children.append(c.get_id())
 
 
 class Adult(Person):
@@ -221,6 +327,59 @@ class Adult(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    def can_have_child(self):
+        return True
+
+    def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
+        if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
+            raise Exception("p is not an Adult of Senior")
+        if (type(id) is not int) or (id<0):
+            raise Exception("id is not an integer")
+        if (type(first_name) is not str) or (first_name==""):
+            raise Exception("first_name is not a string")
+        if (all(isinstance(date_of_birth, int) for item in date_of_birth) or (len(date_of_birth)!=3)) or (date_of_birth[0]<1 or date_of_birth[0]>12) or (date_of_birth[1]<1 or date_of_birth[1]>31):
+            raise Exception("date_of_birth is not a valid date")
+        if (type(genre) is not str) or (genre not in Person.GENRES):
+            raise Exception("genre is not valid")
+
+        if (not self.can_have_child()) or (not p.can_have_child()):
+            raise Exception("Can't have baby")
+
+        if eyes_color=='':
+            if self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Green'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Brown'
+
+        if (type(eyes_color) is not str) or (eyes_color not in Person.EYES_COLORS):
+            raise Exception("eyes_color is not valid")
+
+        if id not in p.children:
+            p.children.append(id)
+        if id not in self.children:
+            self.children.append(id)
+
+        return Baby(id,first_name,date_of_birth,genre,eyes_color)
+
+    def adopt_child(self, c):
+        if (not self.can_have_child()):
+            raise Exception("Can't adopt child")
+        self.children.append(c.get_id())
+
 
 class Senior(Person):
     def can_run(self):
@@ -260,6 +419,59 @@ class Senior(Person):
             p.last_name = self.last_name
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
+
+    def can_have_child(self):
+        return False
+
+    def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
+        if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
+            raise Exception("p is not an Adult of Senior")
+        if (type(id) is not int) or (id<0):
+            raise Exception("id is not an integer")
+        if (type(first_name) is not str) or (first_name==""):
+            raise Exception("first_name is not a string")
+        if (all(isinstance(date_of_birth, int) for item in date_of_birth) or (len(date_of_birth)!=3)) or (date_of_birth[0]<1 or date_of_birth[0]>12) or (date_of_birth[1]<1 or date_of_birth[1]>31):
+            raise Exception("date_of_birth is not a valid date")
+        if (type(genre) is not str) or (genre not in Person.GENRES):
+            raise Exception("genre is not valid")
+
+        if (not self.can_have_child()) or (not p.can_have_child()):
+            raise Exception("Can't have baby")
+
+        if eyes_color=='':
+            if self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Green'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Blue'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Blue' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Blue' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Green' and p.get_eyes_color() == 'Brown' :
+                eyes_color = 'Brown'
+            elif self.get_eyes_color() == 'Brown' and p.get_eyes_color() == 'Green' :
+                eyes_color = 'Brown'
+
+        if (type(eyes_color) is not str) or (eyes_color not in Person.EYES_COLORS):
+            raise Exception("eyes_color is not valid")
+
+        if id not in p.children:
+            p.children.append(id)
+        if id not in self.children:
+            self.children.append(id)
+
+        return Baby(id,first_name,date_of_birth,genre,eyes_color)
+
+    def adopt_child(self, c):
+        if (not self.can_have_child()):
+            raise Exception("Can't adopt child")
+        self.children.append(c.get_id())
 
 '''save JSON to file'''
 def save_to_file(list, filename):
