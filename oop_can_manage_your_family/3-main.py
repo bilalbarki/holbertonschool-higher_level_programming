@@ -5,7 +5,7 @@ my_family = load_from_file("my_family.json")
 print "I have %d members in my family" % len(my_family)
 
 # new baby!
-b = Adult(3, "Tony", [7, 4, 2015], "Male", "Green")
+b = Baby(3, "Tony", [7, 4, 2015], "Male", "Green")
 b.last_name = "Foto"
 my_family.append(b)
 

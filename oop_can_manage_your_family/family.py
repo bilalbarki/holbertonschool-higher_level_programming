@@ -33,50 +33,65 @@ class Person():
     '''end of initialization'''
     
     '''getters'''
+    '''get id'''
     def get_id(self):
         return self.__id
 
+    '''get genre'''
     def get_genre(self):
         return self.__genre
 
+    '''get eyes color'''
     def get_eyes_color(self):
         return self.__eyes_color
 
+    '''get date of birth'''
     def get_date_of_birth(self):
         return self.__date_of_birth
 
+    '''get first name'''
     def get_first_name(self):
         return self.__first_name
 
+    '''get eyes color'''
     def get_eyes_color(self):
         return self.__eyes_color
     '''end of getters'''
 
     '''Public methods'''
+    '''str'''
     def __str__(self):
         return self.__first_name + " " + self.last_name
 
+    '''is male'''
     def is_male(self):
         if self.__genre=="Male":
             return True
         return False
 
+    '''age'''
     def age(self):
         '''today = datetime.date.today()'''
         today=[5, 20, 2016]
         return today[2]-self.__date_of_birth[2]
 
     '''overloading'''
+    '''eq'''
     def __eq__(self, other):
         return self.age() == other.age()
+    '''ne'''
     def __ne__(self, other):
         return self.age() != other.age()
+    '''lt'''
     def __lt__(self, other):
         return self.age() < other.age()
+    '''gt'''
     def __gt__(self, other):
         return self.age() > other.age()
+    '''le'''
     def __le__(self, other):
         return self.age() <= other.age()
+    '''ge'''
     def __ge__(self, other):
         return self.age() >= other.age()
     '''overloading end'''
@@ -89,10 +104,12 @@ class Person():
             'date_of_birth': self.__date_of_birth,
             'first_name' : self.__first_name,
             'last_name' : self.last_name,
-            'is_married_to' : self.is_married_to
+            'is_married_to' : self.is_married_to,
+            'children' : self.children
         }
         return json
 
+    '''load from json'''
     def load_from_json(self, json):
         if type(json) is not dict:
             raise Exception("json is not valid") 
@@ -103,32 +120,42 @@ class Person():
         self.__first_name = json['first_name']
         self.last_name = json['last_name']
         self.is_married_to = json['is_married_to']
+        self.children = json['children']
 
+'''class baby'''
 class Baby(Person):
+    '''can run'''
     def can_run(self):
         return False
 
+    '''need help'''
     def need_help(self):
         return True
 
+    '''is young'''
     def is_young(self):
         return True
     
+    '''can vote'''
     def can_vote(self):
         return False
 
+    '''can be married'''
     def can_be_married(self):
         return False
 
+    '''is married'''
     def is_married(self):
         if self.is_married_to != 0:
             return True
         return False
 
+    '''divorce'''
     def divorce(self, p):
         self.is_married_to=0
         p.is_married_to=0
 
+    '''just married with'''
     def just_married_with(self, p):
         if self.is_married_to != 0 or p.is_married_to != 0:
             raise Exception("Already married")
@@ -143,9 +170,11 @@ class Baby(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    '''can have child'''
     def can_have_child(self):
         return False
 
+    '''has child with'''
     def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
         if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
             raise Exception("p is not an Adult of Senior")
@@ -190,36 +219,73 @@ class Baby(Person):
 
         return Baby(id,first_name,date_of_birth,genre,eyes_color)
 
+    '''adopt child'''
     def adopt_child(self, c):
         if (not self.can_have_child()):
             raise Exception("Can't adopt child")
-        self.children.append(c.get_id())    
+        self.children.append(c.get_id())
 
+    '''who are my parents'''
+    def who_are_my_parents(self, list_person):
+        parents = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+            if self.get_id() in p.children:
+                parents.append(p)
+        return parents
+
+    '''who are my grandparents'''
+    def who_are_my_grand_parents(self, list_person):
+        grandpar = []
+        par = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+        par = self.who_are_my_parents(list_person)
+        for item in par:
+            for gp in item.who_are_my_parents(list_person):
+                grandpar.append(gp)
+        return grandpar
+
+'''teenager'''
 class Teenager(Person):
+    '''can run'''
     def can_run(self):
         return True
 
+    '''need help'''
     def need_help(self):
         return False
 
+    '''is young'''
     def is_young(self):
         return True
 
+    '''can vote'''
     def can_vote(self):
         return False
 
+    '''can be married'''
     def can_be_married(self):
         return False
 
+    '''is married'''
     def is_married(self):
         if self.is_married_to != 0:
             return True
         return False
 
+    '''divorce'''
     def divorce(self, p):
         self.is_married_to=0
         p.is_married_to=0
 
+    '''just married with'''
     def just_married_with(self, p):
         if self.is_married_to != 0 or p.is_married_to != 0:
             raise Exception("Already married")
@@ -234,9 +300,11 @@ class Teenager(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    '''can have child'''
     def can_have_child(self):
         return False
 
+    '''has child with'''
     def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
         if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
             raise Exception("p is not an Adult of Senior")
@@ -282,37 +350,73 @@ class Teenager(Person):
 
         return Baby(id,first_name,date_of_birth,genre,eyes_color)
 
+    '''adopt child'''
     def adopt_child(self, c):
         if (not self.can_have_child()):
             raise Exception("Can't adopt child")
         self.children.append(c.get_id())
 
+    '''who are my parents'''
+    def who_are_my_parents(self, list_person):
+        parents = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+            if self.get_id() in p.children:
+                parents.append(p)
+        return parents
 
+    '''who are my grandparents'''
+    def who_are_my_grand_parents(self, list_person):
+        grandpar = []
+        par = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+        par = self.who_are_my_parents(list_person)
+        for item in par:
+            for gp in item.who_are_my_parents(list_person):
+                grandpar.append(gp)
+        return grandpar
+
+'''Adult'''
 class Adult(Person):
+    '''can run'''
     def can_run(self):
         return True
 
+    '''need help'''
     def need_help(self):
         return False
 
+    '''is young'''
     def is_young(self):
         return False
 
+    '''can vote'''
     def can_vote(self):
         return True
 
+    '''can be married'''
     def can_be_married(self):
         return True
 
+    '''is married'''
     def is_married(self):
         if self.is_married_to != 0:
             return True
         return False
 
+    '''divorce'''
     def divorce(self, p):
         self.is_married_to=0
         p.is_married_to=0
 
+    '''just married with'''
     def just_married_with(self, p):
         if self.is_married_to != 0 or p.is_married_to != 0:
             raise Exception("Already married")
@@ -327,9 +431,11 @@ class Adult(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    '''can have child'''
     def can_have_child(self):
         return True
 
+    '''has child with'''
     def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
         if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
             raise Exception("p is not an Adult of Senior")
@@ -375,37 +481,73 @@ class Adult(Person):
 
         return Baby(id,first_name,date_of_birth,genre,eyes_color)
 
+    '''adopt child'''
     def adopt_child(self, c):
         if (not self.can_have_child()):
             raise Exception("Can't adopt child")
         self.children.append(c.get_id())
 
+    '''who are my parents'''
+    def who_are_my_parents(self, list_person):
+        parents = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+            if self.get_id() in p.children:
+                parents.append(p)
+        return parents
 
+    '''who are my grandparents'''
+    def who_are_my_grand_parents(self, list_person):
+        grandpar = []
+        par = []
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+        par = self.who_are_my_parents(list_person)
+        for item in par:
+            for gp in item.who_are_my_parents(list_person):
+                grandpar.append(gp)
+        return grandpar
+
+'''Senior'''
 class Senior(Person):
+    '''can run'''
     def can_run(self):
         return False
 
+    '''need help'''
     def need_help(self):
         return True
 
+    '''is young'''
     def is_young(self):
         return False
 
+    '''can vote'''
     def can_vote(self):
         return True
 
+    '''can be married'''
     def can_be_married(self):
         return True
 
+    '''is married'''
     def is_married(self):
         if self.is_married_to != 0:
             return True
         return False
 
+    '''divorce'''
     def divorce(self, p):
         self.is_married_to=0
         p.is_married_to=0
 
+    '''just married with'''
     def just_married_with(self, p):
         if self.is_married_to != 0 or p.is_married_to != 0:
             raise Exception("Already married")
@@ -420,9 +562,11 @@ class Senior(Person):
         elif p.get_genre() == "Male" and self.get_genre() == "Female":
             self.last_name = p.last_name
 
+    '''can have child'''
     def can_have_child(self):
         return False
 
+    '''has child with'''
     def has_child_with(self, p, id, first_name, date_of_birth, genre, eyes_color=''):
         if (p.__class__.__name__!='Adult' and p.__class__.__name__!='Senior') or (p is None):
             raise Exception("p is not an Adult of Senior")
@@ -468,10 +612,25 @@ class Senior(Person):
 
         return Baby(id,first_name,date_of_birth,genre,eyes_color)
 
+    '''adopt child'''
     def adopt_child(self, c):
         if (not self.can_have_child()):
             raise Exception("Can't adopt child")
         self.children.append(c.get_id())
+
+    '''who are my grandchildren'''
+    def who_are_my_grandchildren(self, list_person):
+        if not isinstance(list_person, list):
+            raise Exception("list_person is not valid")
+        for p in list_person:
+            if p.__class__.__name__ == "Person":
+                raise Exception("list_person is not valid")
+        gchildren=[]
+        for child in self.children:
+            for gchild in child.children:
+                gchildren.append(gchild)
+        return gchildren
+        
 
 '''save JSON to file'''
 def save_to_file(list, filename):
@@ -483,6 +642,7 @@ def save_to_file(list, filename):
         json.dump(list, outfile)
     outfile.close()
 
+'''load JSON from file'''
 def load_from_file(filename):
     if type(filename) != str or os.path.isfile(filename) != True:
         raise Exception("filename is not valid or doesn't exist")
@@ -490,9 +650,9 @@ def load_from_file(filename):
         data = json.load(jfile)
     jfile.close()
     list_of_obj = []
-    a_dict = {"Person": Person, "Senior": Senior, "Adult": Adult, "Teenager": Teenager, "Baby": Baby}
-    for i in range(0, len(data)):
-        d = data[i]
-        obj = a_dict[d['type']](d['id'], str(d['first_name']), d['date_of_birth'], str(d['genre']), str(d['eyes_color']))
+    a_dict = {"Senior": Senior, "Adult": Adult, "Teenager": Teenager, "Baby": Baby}
+    for i in data:
+        obj = a_dict[i['type']](1, "Julien", [12, 24, 1980], "Male", "Blue")
+        obj.load_from_json(i)
         list_of_obj.append(obj)
     return list_of_obj

@@ -9,8 +9,14 @@ boby = my_family[2]
 
 vanessa.adopt_child(boby)
 marc.adopt_child(boby)
-monica = vanessa.has_child_with(marc, 5, "Monica", [5, 6, 2016], "Female", "Blue")
+monica = vanessa.has_child_with(marc, 15, "Monica", [5, 6, 2016], "Female", "Blue")
 
+my_family.append(monica)
 print "Vanessa has %d children" % (len(vanessa.children))
+
+parents = monica.who_are_my_parents(my_family)
+
+print "My parents are %s" % (", ".join(map(str, parents)))
+
 
 save_to_file(my_family, "my_family.json")
