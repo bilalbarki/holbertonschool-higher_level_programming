@@ -1,0 +1,4 @@
+func reverse_array(a: [Int]) -> ([Int]){
+     ret b=a.reverse()
+     return b
+}
