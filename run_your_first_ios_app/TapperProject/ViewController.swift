@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
-        readOldScore()
-        updateHighScoreLabel()
+        self.readOldScore()
+        self.updateHighScoreLabel()
         //print("\(old_score) is the old score")
     }
 
@@ -50,17 +50,17 @@ class ViewController: UIViewController {
             if taps>0{
                 print("Let's do \(taps) taps")
                 self.taps_requested = taps
-                initGame()
+                self.initGame()
             }
         }
     }
     
     //action for clicking the coin button
     @IBAction func clickCoinButton(sender: AnyObject) {
-        checkScore()
+        self.checkScore()
         print("Tap!")
         self.taps_done+=1
-        updateTapCounter()
+        self.updateTapCounter()
         if self.taps_done >= self.taps_requested{
             resetGame()
         }
@@ -87,10 +87,10 @@ class ViewController: UIViewController {
     //connected with NSTimer, adds 0.1 to time_passed after every 0.1s
     func countUp(){
         self.time_passed+=0.1
-        time_passed = Float(round(10*time_passed)/10)
+        self.time_passed = Float(round(10*time_passed)/10)
         //preventive measure, so that timer doesn't keep on iterating
         if self.time_passed >= 999999 {
-            resetGame()
+            self.resetGame()
         }
         //print("\(self.time_passed) is time passed")
     }
@@ -128,9 +128,9 @@ class ViewController: UIViewController {
         self.timer=NSTimer()
         //check old and new scores
         if self.high_score < self.old_score{
-            writeToDocumentsFile(filename, value: String(high_score))
+            self.writeToDocumentsFile(filename, value: String(high_score))
             self.old_score = self.high_score
-            updateHighScoreLabel()
+            self.updateHighScoreLabel()
             //print("\(old_score) is the high score")
         }
     }
@@ -165,7 +165,7 @@ class ViewController: UIViewController {
     
     //reads old score from file and saves to memory
     func readOldScore(){
-        let old = readFromDocumentsFile(filename)
+        let old = self.readFromDocumentsFile(filename)
         if (old != ""){
             self.old_score=Float(old)!
             //print ("\(old) is old")
