@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -22,6 +21,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retrobg" translatesAutoresizingMaskIntoConstraints="NO" id="Y64-cO-15N">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6O-ro-rR8" userLabel="CoinBtn">
+                                <rect key="frame" x="166" y="30" width="268" height="268"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="268" id="5l8-4V-qHa"/>
+                                    <constraint firstAttribute="width" constant="268" id="hsK-ez-1Dy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" image="coin"/>
+                                <connections>
+                                    <action selector="clickCoinButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="apr-LS-MKJ"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tapper" translatesAutoresizingMaskIntoConstraints="NO" id="atG-o6-5LC">
                                 <rect key="frame" x="157" y="62" width="286" height="110"/>
                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
@@ -53,22 +64,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6O-ro-rR8" userLabel="CoinBtn">
-                                <rect key="frame" x="151" y="10" width="298" height="268"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="268" id="5l8-4V-qHa"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="268" id="W8A-GV-s9E"/>
-                                    <constraint firstAttribute="width" constant="298" id="h2b-dv-txM"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="268" id="igP-0e-CvQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" image="coin"/>
-                                <connections>
-                                    <action selector="clickCoinButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="apr-LS-MKJ"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X taps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEw-72-LlY" userLabel="labelTaps">
-                                <rect key="frame" x="242" y="288" width="116" height="39"/>
+                                <rect key="frame" x="242" y="308" width="116" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="Xu4-vb-gId"/>
                                     <constraint firstAttribute="height" constant="39" id="qiR-ca-crm"/>
@@ -77,18 +74,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score: X s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEw-3X-Mju">
-                                <rect key="frame" x="195" y="180" width="210" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="5md-Ek-VsG"/>
-                                    <constraint firstAttribute="width" constant="210" id="xPv-dC-0zF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URg-Tg-Vge">
-                                <rect key="frame" x="230" y="214" width="140" height="40"/>
+                                <rect key="frame" x="230" y="202" width="140" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1hz-Jw-l2a"/>
                                     <constraint firstAttribute="width" constant="140" id="SX6-mZ-vP6"/>
@@ -98,6 +85,16 @@
                                     <action selector="twitterShareTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TSq-2U-5Yy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score: X s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEw-3X-Mju">
+                                <rect key="frame" x="195" y="168" width="210" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="5md-Ek-VsG"/>
+                                    <constraint firstAttribute="width" constant="210" id="xPv-dC-0zF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,7 +104,8 @@
                             <constraint firstItem="atG-o6-5LC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6xI-Ez-6Of"/>
                             <constraint firstItem="M6O-ro-rR8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BFY-mu-pmf"/>
                             <constraint firstItem="URg-Tg-Vge" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eag-QK-8gV"/>
-                            <constraint firstItem="M6O-ro-rR8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="10" id="IAR-49-Ftw"/>
+                            <constraint firstItem="atG-o6-5LC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="IqZ-Zn-69C"/>
+                            <constraint firstItem="M6O-ro-rR8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Iwc-0j-fSj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y64-cO-15N" secondAttribute="bottom" id="K4N-qF-7kG"/>
                             <constraint firstItem="KEw-72-LlY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K4y-yH-xYM"/>
                             <constraint firstItem="KEw-72-LlY" firstAttribute="top" secondItem="M6O-ro-rR8" secondAttribute="bottom" constant="10" id="NYZ-2m-HFo"/>
@@ -115,12 +113,11 @@
                             <constraint firstItem="yEw-3X-Mju" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wu2-bF-Ito"/>
                             <constraint firstItem="wZX-Qx-WLM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yl7-HD-zNL"/>
                             <constraint firstAttribute="trailing" secondItem="Y64-cO-15N" secondAttribute="trailing" id="dcO-dZ-wHW"/>
-                            <constraint firstItem="URg-Tg-Vge" firstAttribute="top" secondItem="yEw-3X-Mju" secondAttribute="bottom" constant="2" id="f4Z-ya-h8C"/>
                             <constraint firstItem="wZX-Qx-WLM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iie-26-k9M"/>
                             <constraint firstItem="Y64-cO-15N" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qqE-De-CDw"/>
                             <constraint firstItem="vxf-3H-rel" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sJC-3q-cwT"/>
-                            <constraint firstItem="atG-o6-5LC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="42" id="tXm-s4-NyU"/>
-                            <constraint firstItem="yEw-3X-Mju" firstAttribute="top" secondItem="atG-o6-5LC" secondAttribute="bottom" constant="8" id="uJF-2E-Swh"/>
+                            <constraint firstItem="URg-Tg-Vge" firstAttribute="top" secondItem="yEw-3X-Mju" secondAttribute="bottom" constant="2" id="zaC-u8-Yor"/>
+                            <constraint firstItem="yEw-3X-Mju" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="148" id="zwC-o3-WSA"/>
                         </constraints>
                     </view>
                     <connections>

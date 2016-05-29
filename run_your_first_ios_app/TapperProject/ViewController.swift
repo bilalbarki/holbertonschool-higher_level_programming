@@ -124,7 +124,6 @@ class ViewController: UIViewController {
         self.textfield_number.text = ""
         //invalidate and reset timer
         self.timer.invalidate()
-        //print("\(high_score) is high score")
         self.time_passed=0
         self.timer=NSTimer()
         //check old and new scores
@@ -158,8 +157,8 @@ class ViewController: UIViewController {
         do {
             try readText = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
         }
-        catch let error as NSError {
-            print("ERROR : reading from file \(fileName) : \(error.localizedDescription)")
+        catch /*let error as NSError*/ {
+            //print("ERROR : reading from file \(fileName) : \(error.localizedDescription)")
         }
         return readText
     }
@@ -189,7 +188,8 @@ class ViewController: UIViewController {
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterSheet.setInitialText("I just scored a high score of \(self.old_score)s on Tapper!")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
-        } else {
+        }
+        else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
