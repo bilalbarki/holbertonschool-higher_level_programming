@@ -16,6 +16,6 @@ class TaskView(tk.Toplevel):
 
     def update_title(self, title):
         if isinstance(title,str):
-            self.__title_var = title
+            self.__title_var.set(title)
         else:
             raise Exception("title is not a string")
