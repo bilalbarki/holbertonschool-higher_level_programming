@@ -6,7 +6,7 @@ class TaskController():
     def __init__(self, master, model):
         if not isinstance(master, tk.Tk):
             raise Exception("master is not a tk.Tk()")
-        if not isinstance(mode, TaskModel):
+        if not isinstance(model, TaskModel):
             raise Exception("model is not a TaskModel")
 
         self.__model = model
