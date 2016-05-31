@@ -3,7 +3,7 @@ import multiprocessing.pool as npool
 from multiprocessing import Lock
 
 #configuration start
-id_number=1582
+id_number=40
 allowed_number_of_threads_at_one_time=25
 votes=1024
 #configuration end

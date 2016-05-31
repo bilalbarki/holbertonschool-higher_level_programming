@@ -5,7 +5,7 @@ require 'thread'
 
 #configuration start
 url = 'http://173.246.108.142/level0.php'
-id_number = 147
+id_number = 40
 thread_limit = 30
 votes = 1024
 #configuration end
