@@ -3,7 +3,7 @@ import multiprocessing.pool as npool
 from multiprocessing import Lock
 
 #configuration start
-id_number=7857
+id_number=40
 allowed_number_of_threads_at_one_time=30
 votes=1024
 #configuration end
@@ -11,6 +11,7 @@ votes=1024
 #initialization start
 vote_counter=0
 lock=Lock()
+f_lock=Lock()
 pool = npool.ThreadPool(allowed_number_of_threads_at_one_time)
 #initialization end
 
@@ -26,8 +27,8 @@ def thread_it():
         post=opener.open('http://173.246.108.142/level1.php', url_params)
         lock.acquire()
         try:
-            global vote_counter
             if post.getcode() == 200:
+                global vote_counter
                 vote_counter+=1
                 print "Vote\033[1m", vote_counter, "\033[0mhas been submitted!"
             else:
@@ -35,7 +36,11 @@ def thread_it():
         finally:
             lock.release()
     else:
-        print "Failed to open a session, returned with error code:", session.getcode()
+        f_lock.acquire()
+        try:
+            print "Failed to open a session, returned with error code:", session.getcode()
+        finally:
+            f_lock.release()
     opener.close()
 
 #instructions start
