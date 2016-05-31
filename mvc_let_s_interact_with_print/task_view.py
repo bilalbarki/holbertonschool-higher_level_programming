@@ -1,6 +1,7 @@
 import Tkinter as tk
-
+'''View class'''
 class TaskView(tk.Toplevel):
+    '''initialization'''
     def __init__(self, master):
         tk.Toplevel.__init__(self, master)
         self.protocol('WM_DELETE_WINDOW', self.master.destroy)
@@ -14,6 +15,7 @@ class TaskView(tk.Toplevel):
         self.toggle_button = tk.Button(self, text="Reverse")
         self.toggle_button.pack(side="left")
 
+    '''update title'''
     def update_title(self, title):
         if isinstance(title,str):
             self.__title_var.set(title)

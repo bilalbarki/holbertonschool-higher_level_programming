@@ -1,7 +1,7 @@
 import Tkinter as tk
 from task_view import TaskView
 from task_model import TaskModel
-
+'''TaskControler'''
 class TaskController():
     def __init__(self, master, model):
         if not isinstance(master, tk.Tk):
