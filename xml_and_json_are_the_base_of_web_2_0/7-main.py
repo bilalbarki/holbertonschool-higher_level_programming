@@ -22,10 +22,8 @@ for car in cars_json:
     year_element.appendChild(doc.createTextNode("2015"))
     c_xml.appendChild(year_element)
 
-    '''create new xml element weight and add text 1000 in it'''
-    weight_element = doc.createElement('weight')
-    weight_element.appendChild(doc.createTextNode("1000"))
-    c_xml.appendChild(weight_element)
+    '''add attribute of weight to car'''
+    c_xml.setAttribute('weight', '1000')
 
     '''find the tag brand, replace its value by a new value and convert to CDATASection'''
     node = c_xml.getElementsByTagName('brand')[0]

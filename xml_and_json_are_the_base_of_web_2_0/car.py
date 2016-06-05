@@ -13,16 +13,20 @@ class Car():
                 name = splitted[0]
                 brand = splitted[1]
                 nb_doors = int(splitted[2])
+            else:
+                name = None
+                brand = None
+                nb_doors = None
         else:
             name = kwargs.get('name')
             brand = kwargs.get('brand')
             nb_doors = kwargs.get('nb_doors')
 
-        if not isinstance(name,basestring) or name == "":
+        if name == None or not isinstance(name,basestring) or name == "":
             raise Exception("name is not a string")
-        if not isinstance(brand,basestring) or brand == "":
+        if brand == None or not isinstance(brand,basestring) or brand == "":
             raise Exception("brand is not a string")
-        if not isinstance(nb_doors, int) or nb_doors <= 0:
+        if nb_doors == None or not isinstance(nb_doors, int) or nb_doors <= 0:
             raise Exception("nb_doors is not > 0")
 
         self.__name = name
