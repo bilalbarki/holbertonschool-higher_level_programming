@@ -17,7 +17,7 @@ pool = npool.ThreadPool(allowed_number_of_threads_at_one_time)
 
 def thread_it():
     cj = cookielib.CookieJar()
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj), urllib2.HTTPHandler())
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
     opener.addheaders=[
         ('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'),
         ('Referer', 'http://173.246.108.142/level2.php'),
