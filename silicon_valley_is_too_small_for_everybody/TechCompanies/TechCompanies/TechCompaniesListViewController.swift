@@ -10,46 +10,51 @@ import UIKit
 
 class TechCompaniesListViewController: UITableViewController {
     
-    var schoolList:[Entity]!
-    var techCompanyList:[Entity]!
+    var schoolList:[Entity]!=[]
+    var techCompanyList:[Entity]!=[]
     var sectionNames_0:[String] = ["Tech Companies", "Schools"]
     var sectionNames_1:[String] = ["San Francisco", "Mountain View", "Sunnyvale", "Cupertino"]
     let techDetailSegue = "techDetailSegue"
     var toggle: Bool = false
+    
     
     var listOfSanFrancisco:[Entity]! = []
     var listOfMountainView:[Entity]! = []
     var listOfSunnyvale:[Entity]! = []
     var listOfCupertino:[Entity]! = []
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Entity list"
-        techCompanyList = EntitiesHelper.getTechCompanies()
-        schoolList = EntitiesHelper.getSchools()
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-        for item in schoolList + techCompanyList {
-            
-            if item.getTown() == "San Francisco" {
-                self.listOfSanFrancisco.append(item)
-            }
-            else if item.getTown() == "Mountain View" {
-                self.listOfMountainView.append(item)
-            }
-            else if item.getTown() == "Sunnyvale" {
-                self.listOfSunnyvale.append(item)
-            }
-            else if item.getTown() == "Cupertino" {
-                self.listOfCupertino.append(item)
-            }
+        EntitiesHelper.get_and_parse_json()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TechCompaniesListViewController.refreshList(_:)), name:"refreshMyTableView", object: nil)
+        while techCompanyList.count == 0 {
+            self.tableView.reloadData()
         }
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    //used in NSNotificationCenter for refreshing UI
+    func refreshList(notification: NSNotification){
+        techCompanyList = EntitiesHelper.getTechCompanies()
+        schoolList = EntitiesHelper.getSchools()
+        //self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+        self.get_by_place()
+        self.tableView.reloadData()
+        
+    }
+    
+    //updates by place list
+    func get_by_place(){
+        self.listOfSanFrancisco = EntitiesHelper.get_listOfSanFrancisco()
+        self.listOfMountainView = EntitiesHelper.get_listOfMountainView()
+        self.listOfSunnyvale = EntitiesHelper.get_listOfSunnyvale()
+        self.listOfCupertino = EntitiesHelper.get_listOfCupertino()
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,12 +133,22 @@ class TechCompaniesListViewController: UITableViewController {
         default:
             cell.detailTextLabel?.text = "I love working"
         }
+        
+        if entity.getimageName() == "spple" {
+            cell.imageView?.image = UIImage(named: "apple")
+        }
+        else if EntitiesHelper.images.contains(entity.getimageName()){
+            cell.imageView?.image = UIImage(named: entity.getimageName())
+        }
+        else {
+            cell.imageView?.image = UIImage(named: "404")
+        }
+        
+        
         cell.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.imageView?.image = UIImage(named: entity.getimageName())
-        
-        
         let itemSize = CGSizeMake(30, 30);
         UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.mainScreen().scale);
+        cell.imageView!.sizeToFit()
         let imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
         cell.imageView?.image!.drawInRect(imageRect)
         cell.imageView?.image! = UIGraphicsGetImageFromCurrentImageContext();
@@ -198,19 +213,7 @@ class TechCompaniesListViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-       /* if segue.identifier == techDetailSegue {
-            let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)
-            if let destinationViewController = segue.destinationViewController as? TechCompanyDetailViewController {
-               
-                
-                if indexPath!.section == 0 {
-                    destinationViewController.entity = techCompanyList[indexPath!.row]
-                }
-                else if indexPath!.section == 1 {
-                    destinationViewController.entity = schoolList[indexPath!.row]
-                }
-            }
-        }*/
+       
         if toggle{
             if segue.identifier == techDetailSegue {
                 let destVC = segue.destinationViewController as? TechCompanyDetailViewController
@@ -248,6 +251,7 @@ class TechCompaniesListViewController: UITableViewController {
         }
     }
     
+    //on toggle switches the toggle variable value and reloads UI
     @IBAction func toggleIt(sender: UIBarButtonItem) {
         toggle = toggle == false ? true : false
         self.tableView.reloadData()

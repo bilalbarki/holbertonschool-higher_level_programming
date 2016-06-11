@@ -22,7 +22,16 @@ class TechCompanyDetailViewController: UIViewController {
         if entity != nil {
             self.title = entity.getName()
             self.label_entity.text = entity.getTown()
-            self.image_entity.image = UIImage(imageLiteral: entity.getimageName())
+            if entity.getimageName() == "spple" {
+                self.image_entity.image = UIImage(named: "apple")
+            }
+            else if EntitiesHelper.images.contains(entity.getimageName()){
+                self.image_entity.image = UIImage(named: entity.getimageName())
+            }
+            else {
+                self.image_entity.image = UIImage(named: "404")
+            }
+
         }
     }
 

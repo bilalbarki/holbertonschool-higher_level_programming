@@ -8,12 +8,14 @@
 
 import Foundation
 
+//enum
 enum EntityType:String {
     case None = "None"
     case School = "School"
     case TechCompany = "TechCompany"
 }
 
+//base Entity class
 class Entity {
     private var name:String
     private var town:String

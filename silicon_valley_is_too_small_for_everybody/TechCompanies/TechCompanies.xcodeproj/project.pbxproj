@@ -16,6 +16,7 @@
 		1D15A1131D088B5500ABBCBC /* EntitiesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15A1121D088B5500ABBCBC /* EntitiesHelper.swift */; };
 		1D15A11A1D08911A00ABBCBC /* TechCompaniesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15A1191D08911A00ABBCBC /* TechCompaniesListViewController.swift */; };
 		1D15A11E1D08C6DF00ABBCBC /* TechCompanyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15A11D1D08C6DF00ABBCBC /* TechCompanyDetailViewController.swift */; };
+		1DCF8AE71D0B6DA200586382 /* TechCompanyAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCF8AE61D0B6DA200586382 /* TechCompanyAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1D15A1121D088B5500ABBCBC /* EntitiesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitiesHelper.swift; sourceTree = "<group>"; };
 		1D15A1191D08911A00ABBCBC /* TechCompaniesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompaniesListViewController.swift; sourceTree = "<group>"; };
 		1D15A11D1D08C6DF00ABBCBC /* TechCompanyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompanyDetailViewController.swift; sourceTree = "<group>"; };
+		1DCF8AE61D0B6DA200586382 /* TechCompanyAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompanyAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				1D15A1191D08911A00ABBCBC /* TechCompaniesListViewController.swift */,
 				1D15A11D1D08C6DF00ABBCBC /* TechCompanyDetailViewController.swift */,
+				1DCF8AE61D0B6DA200586382 /* TechCompanyAddViewController.swift */,
 			);
 			name = "ViewControllers ";
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			files = (
 				1D15A1131D088B5500ABBCBC /* EntitiesHelper.swift in Sources */,
 				1D15A1001D087DF500ABBCBC /* ViewController.swift in Sources */,
+				1DCF8AE71D0B6DA200586382 /* TechCompanyAddViewController.swift in Sources */,
 				1D15A0FE1D087DF500ABBCBC /* AppDelegate.swift in Sources */,
 				1D15A11A1D08911A00ABBCBC /* TechCompaniesListViewController.swift in Sources */,
 				1D15A1111D08845500ABBCBC /* Entity.swift in Sources */,
