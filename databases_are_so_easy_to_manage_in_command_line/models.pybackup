@@ -1,0 +1,59 @@
+from peewee import *
+
+my_models_db = peewee.SqliteDatabase('my_models.db', pragmas=(
+    ('foreign_keys', 1),
+    )
+)
+
+class BaseModel(peewee.Model):
+    '''id is unique'''
+    id = peewee.PrimaryKeyField(unique = True)
+    
+    '''Meta subclass'''
+    class Meta:
+        database = my_models_db
+        order_by = ('id', )
+    
+class School (BaseModel):
+    '''school class, name is max 128 chars and null is false'''
+    name = peewee.FixedCharField(max_length = 128, null = False)
+    '''str overload'''
+    def __str__(self):
+        return "School: %s (%d)" % (self.name, self.id)
+
+class Batch(BaseModel):
+    '''batch class'''
+    school = peewee.ForeignKeyField(rel_model = School, related_name = 'batches', on_delete = 'cascade')
+    '''name cant be null, max 128 chars'''
+    name = peewee.FixedCharField(max_length = 128, null = False)
+    
+    '''str overload'''
+    def __str__(self):
+         return "School: %s (%d)" % (self.name, self.id)
+
+class User(BaseModel):
+    '''class User'''
+    first_name = peewee.FixedCharField(max_length = 128, default = "")
+    last_name = peewee.FixedCharField(max_length = 128, null = False)
+    age = peewee.IntegerField(null = False)
+    
+    '''str overload'''
+    def __str__(self):
+        return "School: %s %s (%d)" % (self.first_name, self.last_name, self.id)
+
+class Student(User):
+    batch = peewee.ForeignKeyField(rel_model = Batch, related_name = 'students', on_delete = 'cascade')
+    
+    '''str overload'''
+    def __str__(self):
+        return "Student: %s %s (%d) part of the batch: %s" % (self.first_name, self.last_name, self.id, self.batch
+
+'''class Exercise(BaseModel):
+    SUBJECTS = [('math', "Math"), ('english', "English"), ('history', "History"), ('c_prog', "C prog"), ('swift_prog', "Swift prog")]
+    student = peewee.ForeignKeyField(rel_model = Student, related_name = 'exercises', on_delete = 'cascade')
+    subject = peewee.FixedCharField(max_length = 128, choices = SUBJECTS)
+    note = peewee.IntegerField(default = 0)
+
+    def __str__(self):
+        return "Exercise: " + str(self.student) + " has " + str(self.note) + " in " + self.subject + " (" + str(self.id) + ")"
+'''
