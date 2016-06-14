@@ -1,0 +1,104 @@
+from models import *
+from sys import argv
+
+
+
+def print_table():
+    '''prints whole table'''
+    if len(argv) == 3:
+        if argv[2] == "school":
+            row = School.select()
+            for r in row:
+                print r
+        elif argv[2] == "batch":
+            row = Batch.select()
+            for r in row:
+                print r
+        elif argv[2] == "user":
+            row = User.select()
+            for r in row:
+                print r
+        elif argv[2] == "student":
+            row = Student.select()
+            for r in row:
+                print r
+        '''elif argv[2] == "exercise":
+            row = Exercise.select()
+            for r in row:
+                print r'''
+
+def new_table():
+    '''connect and create tables'''
+    my_models_db.connect()
+    my_models_db.create_tables([School, Batch, User, Student, Exercise])
+
+def insert_table():
+    if argv[2] == "school":
+        new = School.create(name=argv[3])
+        print "New school: %s" % new
+    elif argv[2] == "batch":
+        new = Batch.create(school=argv[3], name=argv[4])
+        print "New batch: %s" % str(new)
+    elif argv[2] == "student":
+        if len(argv) == 7:
+            new = Student.create(
+                batch = int(argv[3]),
+                age = int(argv[4]),
+                last_name = argv[5],
+                first_name = argv[6],
+            )
+        else:
+            new = Student.create(
+                batch = int(argv[3]),
+                age = int(argv[4]),
+                last_name = argv[5],
+            )
+        print "New student: %s" % new
+
+
+def delete_table():
+    '''deletes table or prints nothing to delete'''
+    if argv[2] == "school":
+        q = School.select().where(Schools.id == argv[3])
+        if q.exists():
+            targ = q.get()
+            School.delete().where(School.id == argv[3]).execute()
+            print "Delete: %s" % str(targ)
+        else:
+            print "Nothing to delete"
+    elif argv[2] == "batch":
+        q = Batch.select().where(Batch.id == argv[3])
+        if q.exists():
+            targ = q.get()
+            Batch.delete().where(Batch.id == argv[3]).execute()
+            print "Delete: %s" % str(targ)
+        else:
+            print "Nothing to delete"
+    elif argv[2] == "student":
+        q = Student.select().where(Student.id == argv[3])
+        if q.exists():
+            targ = q.get()
+            Student.delete().where(Student.id == argv[3]).execute()
+            print "Delete: %s" % str(targ)
+        else:
+            print "Nothing to delete"
+    '''elif argv[2] == "exercise":
+        q = Exercise.select().where(Exercise.id == argv[3])
+        if q.exists():
+            targ = q.get()
+            Exercise.delete().where(Exercise.id == argv[3]).execute()
+            print "Delete: %s" % str(targ)
+    else:
+        print "Nothing to delete"'''
+
+'''checks for arguments'''
+if len(argv) < 2:
+    print "Please enter an action"
+elif argv[1]=="create":
+    new_table()
+elif argv[1]=="print":
+    print_table()
+elif argv[1]=="insert":
+    insert_table()
+elif argv[1]=="delete":
+    delete_table()
