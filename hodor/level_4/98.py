@@ -55,7 +55,6 @@ def generate_vote():
 print "Please standby..."
 #instruction end
 
-#threading start
 with Controller.from_port(port = 9051) as controller:
     controller.authenticate("Floopowder7")
     while(vote_counter < votes):
