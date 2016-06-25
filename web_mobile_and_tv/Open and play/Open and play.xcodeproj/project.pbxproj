@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D10226F1D1E94A2004886AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D10226E1D1E94A2004886AF /* AppDelegate.swift */; };
+		1D1022711D1E94A2004886AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1022701D1E94A2004886AF /* ViewController.swift */; };
+		1D1022741D1E94A2004886AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D1022721D1E94A2004886AF /* Main.storyboard */; };
+		1D1022761D1E94A2004886AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D1022751D1E94A2004886AF /* Assets.xcassets */; };
+		1D1022821D1E9528004886AF /* MyTVAppItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1022811D1E9528004886AF /* MyTVAppItem.swift */; };
+		1D1022841D1EA376004886AF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1022831D1EA376004886AF /* CollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D10226B1D1E94A2004886AF /* Open and play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open and play.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D10226E1D1E94A2004886AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1D1022701D1E94A2004886AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D1022731D1E94A2004886AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D1022751D1E94A2004886AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D1022771D1E94A2004886AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D1022811D1E9528004886AF /* MyTVAppItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTVAppItem.swift; sourceTree = "<group>"; };
+		1D1022831D1EA376004886AF /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D1022681D1E94A2004886AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D1022621D1E94A2004886AF = {
+			isa = PBXGroup;
+			children = (
+				1D10226D1D1E94A2004886AF /* Open and play */,
+				1D10226C1D1E94A2004886AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1D10226C1D1E94A2004886AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D10226B1D1E94A2004886AF /* Open and play.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1D10226D1D1E94A2004886AF /* Open and play */ = {
+			isa = PBXGroup;
+			children = (
+				1D10226E1D1E94A2004886AF /* AppDelegate.swift */,
+				1D1022701D1E94A2004886AF /* ViewController.swift */,
+				1D1022721D1E94A2004886AF /* Main.storyboard */,
+				1D1022751D1E94A2004886AF /* Assets.xcassets */,
+				1D1022771D1E94A2004886AF /* Info.plist */,
+				1D1022811D1E9528004886AF /* MyTVAppItem.swift */,
+				1D1022831D1EA376004886AF /* CollectionViewCell.swift */,
+			);
+			path = "Open and play";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D10226A1D1E94A2004886AF /* Open and play */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D10227A1D1E94A2004886AF /* Build configuration list for PBXNativeTarget "Open and play" */;
+			buildPhases = (
+				1D1022671D1E94A2004886AF /* Sources */,
+				1D1022681D1E94A2004886AF /* Frameworks */,
+				1D1022691D1E94A2004886AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Open and play";
+			productName = "Open and play";
+			productReference = 1D10226B1D1E94A2004886AF /* Open and play.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1D1022631D1E94A2004886AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Bilal Barki";
+				TargetAttributes = {
+					1D10226A1D1E94A2004886AF = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 1D1022661D1E94A2004886AF /* Build configuration list for PBXProject "Open and play" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1D1022621D1E94A2004886AF;
+			productRefGroup = 1D10226C1D1E94A2004886AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D10226A1D1E94A2004886AF /* Open and play */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D1022691D1E94A2004886AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D1022761D1E94A2004886AF /* Assets.xcassets in Resources */,
+				1D1022741D1E94A2004886AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D1022671D1E94A2004886AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D1022821D1E9528004886AF /* MyTVAppItem.swift in Sources */,
+				1D1022711D1E94A2004886AF /* ViewController.swift in Sources */,
+				1D1022841D1EA376004886AF /* CollectionViewCell.swift in Sources */,
+				1D10226F1D1E94A2004886AF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1D1022721D1E94A2004886AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D1022731D1E94A2004886AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D1022781D1E94A2004886AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		1D1022791D1E94A2004886AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1D10227B1D1E94A2004886AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Open and play/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bilal.Open-and-play";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1D10227C1D1E94A2004886AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Open and play/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bilal.Open-and-play";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D1022661D1E94A2004886AF /* Build configuration list for PBXProject "Open and play" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D1022781D1E94A2004886AF /* Debug */,
+				1D1022791D1E94A2004886AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D10227A1D1E94A2004886AF /* Build configuration list for PBXNativeTarget "Open and play" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D10227B1D1E94A2004886AF /* Debug */,
+				1D10227C1D1E94A2004886AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1D1022631D1E94A2004886AF /* Project object */;
+}
