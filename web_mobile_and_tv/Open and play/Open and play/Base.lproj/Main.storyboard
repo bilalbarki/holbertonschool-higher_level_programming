@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -38,8 +39,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYF-ek-pPA">
-                                                    <rect key="frame" x="0.0" y="57" width="300" height="57"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYF-ek-pPA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -48,6 +49,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.73148321719999998" green="1" blue="0.74054290020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="SYF-ek-pPA" firstAttribute="leading" secondItem="E36-YK-KQz" secondAttribute="leadingMargin" constant="-8" id="ACn-tM-12f"/>
+                                            <constraint firstItem="SYF-ek-pPA" firstAttribute="top" secondItem="E36-YK-KQz" secondAttribute="topMargin" constant="-8" id="Ryf-Bu-i3A"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="SYF-ek-pPA" secondAttribute="trailing" constant="-8" id="ZKh-fC-nXL"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="SYF-ek-pPA" secondAttribute="bottom" constant="-8" id="nR1-Vt-hs6"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="titleLabel" destination="SYF-ek-pPA" id="ole-Wb-8Wp"/>
                                         </connections>
